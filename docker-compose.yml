@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  database:
+    image: postgres
+    container_name: finapidb
+    restart: on-failure
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=fin_api
+    volumes:
+      - pgdata:/data/postgres
+
+volumes:
+  pgdata:
+    driver: local
